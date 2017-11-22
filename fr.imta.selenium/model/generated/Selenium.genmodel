@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/fr.imta.selenium/src-gen" editDirectory="/fr.imta.selenium.edit/src"
+    editorDirectory="/fr.imta.selenium.editor/src" modelPluginID="fr.imta.selenium"
+    forceOverwrite="true" modelName="Selenium" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="fr.imta.selenium.edit"
+    editorPluginID="fr.imta.selenium.editor" runtimeVersion="2.10">
+  <genPackages prefix="Selenium" basePackage="fr.imta.tp.selenium" disposableProviderFactory="true"
+      fileExtensions="sel" ecorePackage="Selenium.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Selenium.ecore#//BROWSER">
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//BROWSER/firefox"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//BROWSER/chrome"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Selenium.ecore#//PROPERTY">
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//PROPERTY/byclassname"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//PROPERTY/byid"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//PROPERTY/bycss"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//PROPERTY/byxpath"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//PROPERTY/byname"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//PROPERTY/bytag"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Selenium.ecore#//COMPARATOR">
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//COMPARATOR/equals"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//COMPARATOR/contains"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//COMPARATOR/different"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//COMPARATOR/greater"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//COMPARATOR/lower"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//COMPARATOR/starts"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//COMPARATOR/ends"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Selenium.ecore#//TYPE">
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//TYPE/string"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//TYPE/integer"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//TYPE/webelement"/>
+      <genEnumLiterals ecoreEnumLiteral="Selenium.ecore#//TYPE/array"/>
+    </genEnums>
+    <genClasses ecoreClass="Selenium.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Model/program"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Program">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Program/procedures"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Program/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Procedure">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Procedure/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Procedure/params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Procedure/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Procedure/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//ProcedureParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//ProcedureParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//ProcedureParameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//ProcedureBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//ProcedureBody/statements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//ProcedureBody/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//ProcedureBody/arrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Statement"/>
+    <genClasses ecoreClass="Selenium.ecore#//VariableDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//VariableDeclaration/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//FindMultiple">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//FindMultiple/prop"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//FindMultiple/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//FindMultiple/arrayAccess"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//FindMultiple/array"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//ProcedureCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//ProcedureCall/proc"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//ProcedureCall/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//ProcedureCall/arrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Operation/strvalue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Operation/intvalue"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//CallNative"/>
+    <genClasses ecoreClass="Selenium.ecore#//CallNativeWithResult">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//CallNativeWithResult/arrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Open">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Open/browser"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Close">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Close/browser"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Go">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Go/location"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Go/arrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Find">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Find/prop"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Find/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Fill">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Fill/elem"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Fill/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Fill/arrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Click">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Click/elem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Click/arrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Verify">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Verify/elem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Verify/leftArrayAccess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Verify/comp"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Verify/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Verify/rightArrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Show">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Show/elem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//Show/arrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//ShowMultiple">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//ShowMultiple/elem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Selenium.ecore#//ShowMultiple/arrayAccess"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Get">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//Get/prop"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Get/elem"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Len">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Selenium.ecore#//Len/elem"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//SeleniumType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//SeleniumType/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Selenium.ecore#//Variable"/>
+    <genClasses ecoreClass="Selenium.ecore#//Array"/>
+    <genClasses ecoreClass="Selenium.ecore#//ArrayAccess">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Selenium.ecore#//ArrayAccess/id"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

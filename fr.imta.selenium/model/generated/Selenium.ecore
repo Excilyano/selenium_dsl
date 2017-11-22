@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="selenium" nsURI="http://www.imta.fr/tp/selenium/Selenium" nsPrefix="selenium">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="program" eType="#//Program"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Program">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="procedures" upperBound="-1"
+        eType="#//Procedure" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//Statement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Procedure">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//ProcedureParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TYPE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//ProcedureBody"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcedureParameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TYPE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcedureBody">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//Statement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableDeclaration" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FindMultiple" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prop" eType="#//PROPERTY"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="array" eType="#//Array"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProcedureCall" eSuperTypes="#//VariableDeclaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proc" eType="#//Procedure"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" unique="false"
+        upperBound="-1" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" upperBound="-1"
+        eType="#//ArrayAccess" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" eSuperTypes="#//VariableDeclaration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intvalue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CallNative" eSuperTypes="#//Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CallNativeWithResult" eSuperTypes="#//VariableDeclaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Open" eSuperTypes="#//CallNative">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="browser" eType="#//BROWSER"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Close" eSuperTypes="#//CallNative">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="browser" eType="#//BROWSER"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Go" eSuperTypes="#//CallNative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Find" eSuperTypes="#//CallNativeWithResult">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prop" eType="#//PROPERTY"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SeleniumType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Fill" eSuperTypes="#//CallNative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Click" eSuperTypes="#//CallNative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Verify" eSuperTypes="#//CallNative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leftArrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comp" eType="#//COMPARATOR"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rightArrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Show" eSuperTypes="#//CallNative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ShowMultiple" eSuperTypes="#//CallNative">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//SeleniumType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrayAccess" eType="#//ArrayAccess"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Get" eSuperTypes="#//CallNativeWithResult">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prop" eType="#//PROPERTY"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//SeleniumType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Len" eSuperTypes="#//CallNativeWithResult">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//SeleniumType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SeleniumType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//SeleniumType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Array" eSuperTypes="#//SeleniumType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ArrayAccess">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BROWSER">
+    <eLiterals name="firefox" literal="firefox"/>
+    <eLiterals name="chrome" value="1" literal="chrome"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PROPERTY">
+    <eLiterals name="byclassname" literal="class"/>
+    <eLiterals name="byid" value="1" literal="id"/>
+    <eLiterals name="bycss" value="2" literal="cssSelector"/>
+    <eLiterals name="byxpath" value="3" literal="xpath"/>
+    <eLiterals name="byname" value="4" literal="name"/>
+    <eLiterals name="bytag" value="5" literal="tagName"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="COMPARATOR">
+    <eLiterals name="equals" literal="equals"/>
+    <eLiterals name="contains" value="1" literal="contains"/>
+    <eLiterals name="different" value="2" literal="different"/>
+    <eLiterals name="greater" value="3" literal="greater"/>
+    <eLiterals name="lower" value="4" literal="lower"/>
+    <eLiterals name="starts" value="5" literal="starts"/>
+    <eLiterals name="ends" value="6" literal="ends"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TYPE">
+    <eLiterals name="string" literal="string"/>
+    <eLiterals name="integer" value="1" literal="integer"/>
+    <eLiterals name="webelement" value="2" literal="element"/>
+    <eLiterals name="array" value="3" literal="element[]"/>
+  </eClassifiers>
+</ecore:EPackage>

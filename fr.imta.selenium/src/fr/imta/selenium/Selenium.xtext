@@ -1,0 +1,158 @@
+grammar fr.imta.tp.selenium.Selenium with org.eclipse.xtext.common.Terminals
+
+generate selenium "http://www.imta.fr/tp/selenium/Selenium"
+
+Model:
+	program=Program
+;
+
+Program:
+	(procedures+=Procedure)*
+	'execute' ':' (statements+=Statement)+;
+	
+Procedure:
+	'procedure' name=PROC_NAME (params+=ProcedureParameter)* ' ==> ' type=TYPE ':'
+	body=ProcedureBody
+;
+
+ProcedureParameter:
+	'!' name=VAR_NAME ' => ' type=TYPE
+;
+
+ProcedureBody:
+	(statements+=Statement)*
+	'return' value=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+Statement:
+	(VariableDeclaration | CallNative | FindMultiple)
+;
+
+VariableDeclaration:
+	(ProcedureCall | Operation | CallNativeWithResult) ':' variable=Variable
+;
+
+FindMultiple:
+	"findMultiple" 'by' prop=PROPERTY value=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)? ':' array=Array
+;
+
+ProcedureCall:
+	'call' proc=[Procedure|PROC_NAME] ('!' params+=[SeleniumType|VAR_NAME] (arrayAccess+=ArrayAccess)?)*
+;
+
+Operation:
+	strvalue=STRING | intvalue=INT
+;
+
+CallNative:
+	Open |
+	Close |
+	Go |
+	Fill |
+	Click |
+	Verify |
+	Show |
+	ShowMultiple
+;
+
+CallNativeWithResult:
+	Find |
+	Get |
+	Len
+;
+
+Open:
+	"open" browser=BROWSER
+;
+
+Close:
+	"close" browser=BROWSER
+;
+
+Go:
+	"go" location=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+Find:
+	"find" 'by' prop=PROPERTY value=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+Fill:
+	"fill" elem=[SeleniumType|VAR_NAME] 'with' value=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+Click:
+	"click" elem=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+Verify:
+	"verify" elem=[SeleniumType|VAR_NAME] (leftArrayAccess=ArrayAccess)? comp=COMPARATOR value=[SeleniumType|VAR_NAME] (rightArrayAccess=ArrayAccess)?
+;
+
+Show:
+	"show" elem=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+ShowMultiple:
+	"showMultiple" elem=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+Get:
+	"get" prop=PROPERTY 'from' elem=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+Len:
+	"len" elem=[SeleniumType|VAR_NAME] (arrayAccess=ArrayAccess)?
+;
+
+
+SeleniumType :
+	Variable | Array
+;
+
+Variable:
+	name=VAR_NAME
+;
+
+Array:
+	name=VAR_NAME '[]'
+;
+
+ArrayAccess :
+	('[' id=INT ']')
+;
+
+
+enum BROWSER :
+	firefox='firefox' |
+	chrome='chrome'
+;
+
+enum PROPERTY :
+	byclassname = 'class' |
+	byid = 'id' |
+	bycss = 'cssSelector' |
+	byxpath = 'xpath' |
+	byname = 'name' |
+	bytag = 'tagName'
+;
+
+enum COMPARATOR :
+	equals='equals' |
+	contains='contains' |
+	different='different' |
+	greater='greater' |
+	lower='lower' |
+	starts='starts' |
+	ends='ends'
+;
+
+enum TYPE:
+	string="string" |
+	integer='integer' |
+	webelement='element' |
+	array='element[]'
+;
+
+terminal VAR_NAME : ('a'..'z') ID?;
+terminal PROC_NAME : ('A'..'Z') ID?;
